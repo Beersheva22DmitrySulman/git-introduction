@@ -8,7 +8,7 @@ public class BitOperations {
 	public static int getBitValue(long number, int nBit) {
 		int res = -1;
 		if (checkNbit(nBit)) {
-			long mask = 1 << nBit;
+			long mask = 1L << nBit;
 			if ((number & mask) == 0) {
 				res = 0;
 			} else {
@@ -19,7 +19,7 @@ public class BitOperations {
 	}
 	
 	private static boolean checkNbit(int nBit) {
-		return nBit < 64 && nBit > 0;
+		return nBit < 64 && nBit >= 0;
 	}
 
 	/**
@@ -30,7 +30,17 @@ public class BitOperations {
 	 * @return new number in which value of nBit's bit will have a given value
 	 */
 	public static long setBitValue(long number, int nBit, boolean value) {
-		return -1;
+		long res = -1L;
+		if (checkNbit(nBit)) {
+			long mask = 1L << nBit;
+			if (value) {
+				res = number | mask;
+			} else {
+				mask = ~mask;
+				res = number & mask;
+			}
+		}
+		return res;
 	}
 
 	/**
@@ -39,8 +49,13 @@ public class BitOperations {
 	 * @param nBit
 	 * @return  new number in which value of nBit's bit will be reverted (old value - 1, new value - 0) and vice versa)
 	 */
-	public static int revertBitValue(long number, int nBit) {
-		return -1;
+	public static long revertBitValue(long number, int nBit) {
+		long res = -1L;
+		if (checkNbit(nBit)) {
+			long mask = 1L << nBit;
+			res = number ^ mask;
+		}
+		return res;
 	}
 }
 

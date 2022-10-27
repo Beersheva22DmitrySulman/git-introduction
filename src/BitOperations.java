@@ -47,7 +47,7 @@ public class BitOperations {
 	 * 
 	 * @param number
 	 * @param nBit
-	 * @return  new number in which value of nBit's bit will be reverted (old value - 1, new value - 0) and vice versa)
+	 * @return  new number in which value of nBit's bit will be reverted (old value - 1, new value - 0 and vice versa)
 	 */
 	public static long revertBitValue(long number, int nBit) {
 		long res = -1L;

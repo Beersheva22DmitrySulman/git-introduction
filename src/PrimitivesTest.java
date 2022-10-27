@@ -1,10 +1,12 @@
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 class PrimitivesTest {
 
 	@Test
+	@Disabled
 	void test() {
 //		fail("Not yet implemented");
 		int a = 10;
@@ -12,6 +14,7 @@ class PrimitivesTest {
 	}
 
 	@Test
+	@Disabled
 	void operatorTest() {
 		int a = 10;
 		assertEquals(13, a + 3);
@@ -32,5 +35,29 @@ class PrimitivesTest {
 
 	private Integer getThirdDigit(int number) {
 		return number % 10;
+	}
+
+	@Test
+	void getBitValueTest() {
+		long number = 0x3ab7f5;
+		assertEquals(1, BitOperations.getBitValue(number, 5));
+		assertEquals(0, BitOperations.getBitValue(number, 11));
+		assertEquals(0, BitOperations.getBitValue(number, 1));
+		assertEquals(1, BitOperations.getBitValue(number, 2));
+		assertEquals(-1, BitOperations.getBitValue(number, 100));
+	}
+	
+	@Test
+	void setBitValueTest() {
+		long number = 0x3ab7f5;
+		assertEquals(0x3ab7e5, BitOperations.setBitValue(number, 5, false));
+		assertEquals(0x3ab7f5, BitOperations.setBitValue(number, 5, true));
+	}
+	
+	@Test
+	void revertBitValueTest() {
+		long number = 0x3ab7f5;
+		assertEquals(0x3ab7e5, BitOperations.revertBitValue(number, 5));
+		assertEquals(0x3ab7f4, BitOperations.revertBitValue(number, 0));
 	}
 }

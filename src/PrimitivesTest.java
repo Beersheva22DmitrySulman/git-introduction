@@ -45,6 +45,11 @@ class PrimitivesTest {
 		assertEquals(0, BitOperations.getBitValue(number, 1));
 		assertEquals(1, BitOperations.getBitValue(number, 2));
 		assertEquals(-1, BitOperations.getBitValue(number, 100));
+
+		number = -1;
+		assertEquals(1, BitOperations.getBitValue(number, 63));
+		number = BitOperations.revertBitValue(number, 63);
+		assertEquals(0, BitOperations.getBitValue(number, 63));
 	}
 	
 	@Test

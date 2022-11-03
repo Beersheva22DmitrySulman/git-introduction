@@ -55,11 +55,13 @@ public class BitOperations {
 	}
 	
 	public static int leadingZeros(long number) {
-		int pos = 0;
-		while (getBitValue(number, pos) == 0) {
-			pos++;
+		int res = 0;
+		int pos = 63;
+		while (pos >= 0 && getBitValue(number, pos) == 0) {
+			pos--;
+			res++;
 		}
-		return pos;
+		return res;
 	}
 	
 	public static int onesInNumber(long number) {

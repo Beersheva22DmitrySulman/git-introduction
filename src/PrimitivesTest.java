@@ -68,16 +68,18 @@ class PrimitivesTest {
 	
 	@Test
 	void leadingZerosTest() {
-		long number = 8;
-		assertEquals(3, BitOperations.leadingZeros(number));
+		long number = 0xFF000000;
+		assertEquals(0, BitOperations.leadingZeros(number));
 		number = 4;
-		assertEquals(2, BitOperations.leadingZeros(number));
+		assertEquals(61, BitOperations.leadingZeros(number));
 		number = 12;
-		assertEquals(2, BitOperations.leadingZeros(number));
+		assertEquals(60, BitOperations.leadingZeros(number));
 		number = 13;
-		assertEquals(0, BitOperations.leadingZeros(number));
+		assertEquals(60, BitOperations.leadingZeros(number));
 		number = 1;
-		assertEquals(0, BitOperations.leadingZeros(number));
+		assertEquals(63, BitOperations.leadingZeros(number));
+		number = 0;
+		assertEquals(64, BitOperations.leadingZeros(number));
 	}
 	
 	@Test
@@ -94,5 +96,7 @@ class PrimitivesTest {
 		assertEquals(1, BitOperations.onesInNumber(number));
 		number = 7;
 		assertEquals(3, BitOperations.onesInNumber(number));
+		number = 0;
+		assertEquals(0, BitOperations.onesInNumber(number));
 	}
 }

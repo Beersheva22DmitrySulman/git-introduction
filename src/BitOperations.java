@@ -45,7 +45,7 @@ public class BitOperations {
 	 * @param nBit
 	 * @return  new number in which value of nBit's bit will be reverted (old value - 1, new value - 0 and vice versa)
 	 */
-	public static long revertBitValue(long number, int nBit) {
+	public static long invertBitValue(long number, int nBit) {
 		long res = -1L;
 		if (checkNbit(nBit)) {
 			long mask = extracted(nBit);

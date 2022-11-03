@@ -60,9 +60,39 @@ class PrimitivesTest {
 	}
 	
 	@Test
-	void revertBitValueTest() {
+	void invertBitValueTest() {
 		long number = 0x3ab7f5;
 		assertEquals(0x3ab7e5, BitOperations.invertBitValue(number, 4));
 		assertEquals(0x3ab7f4, BitOperations.invertBitValue(number, 0));
+	}
+	
+	@Test
+	void leadingZerosTest() {
+		long number = 8;
+		assertEquals(3, BitOperations.leadingZeros(number));
+		number = 4;
+		assertEquals(2, BitOperations.leadingZeros(number));
+		number = 12;
+		assertEquals(2, BitOperations.leadingZeros(number));
+		number = 13;
+		assertEquals(0, BitOperations.leadingZeros(number));
+		number = 1;
+		assertEquals(0, BitOperations.leadingZeros(number));
+	}
+	
+	@Test
+	void onesInNumber() {
+		long number = 8;
+		assertEquals(1, BitOperations.onesInNumber(number));
+		number = 4;
+		assertEquals(1, BitOperations.onesInNumber(number));
+		number = 12;
+		assertEquals(2, BitOperations.onesInNumber(number));
+		number = 13;
+		assertEquals(3, BitOperations.onesInNumber(number));
+		number = 1;
+		assertEquals(1, BitOperations.onesInNumber(number));
+		number = 7;
+		assertEquals(3, BitOperations.onesInNumber(number));
 	}
 }

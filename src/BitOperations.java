@@ -53,6 +53,24 @@ public class BitOperations {
 		}
 		return res;
 	}
+	
+	public static int leadingZeros(long number) {
+		int pos = 0;
+		while (getBitValue(number, pos) == 0) {
+			pos++;
+		}
+		return pos;
+	}
+	
+	public static int onesInNumber(long number) {
+		int count = 0;
+		for (int i = 0; i < 64; i++) {
+			if (getBitValue(number, i) == 1) {
+				count++;
+			}
+		}
+		return count;
+	}
 }
 
 

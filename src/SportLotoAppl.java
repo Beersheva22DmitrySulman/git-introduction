@@ -21,7 +21,7 @@ public class SportLotoAppl {
 
 	private static int getRandomInt(int min, int max) {
 		Random random = new Random();
-	    return random.nextInt(min, max + 1);
+		return random.nextInt(min, max + 1);
 	}
 	
 	private static long setValue(long array, int index, int value) {

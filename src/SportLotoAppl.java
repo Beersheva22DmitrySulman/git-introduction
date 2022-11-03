@@ -30,7 +30,7 @@ public class SportLotoAppl {
 	}
 	
 	private static int getValue(long array, int index) {
-		long mask = 63 << index * 6;
+		long mask = 63L << index * 6;
 		return (int) ((array & mask) >> index * 6);
 	}
 	

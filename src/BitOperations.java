@@ -15,7 +15,7 @@ public class BitOperations {
 	}
 	
 	private static boolean checkNbit(int nBit) {
-		return nBit < 64 && nBit >= 0;
+		return nBit < Long.SIZE && nBit >= 0;
 	}
 
 	/**
@@ -56,7 +56,7 @@ public class BitOperations {
 	
 	public static int leadingZeros(long number) {
 		int res = 0;
-		int pos = 63;
+		int pos = Long.SIZE - 1;
 		while (pos >= 0 && getBitValue(number, pos) == 0) {
 			pos--;
 			res++;
@@ -66,7 +66,7 @@ public class BitOperations {
 	
 	public static int onesInNumber(long number) {
 		int count = 0;
-		for (int i = 0; i < 64; i++) {
+		for (int i = 0; i < Long.SIZE; i++) {
 			if (getBitValue(number, i) == 1) {
 				count++;
 			}

@@ -9,11 +9,7 @@ public class BitOperations {
 		int res = -1;
 		if (checkNbit(nBit)) {
 			long mask = 1L << nBit;
-			if ((number & mask) == 0) {
-				res = 0;
-			} else {
-				res = 1;
-			}
+			res = (number & mask) == 0 ? 0 : 1;
 		}
 		return res;
 	}

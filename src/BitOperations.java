@@ -8,7 +8,7 @@ public class BitOperations {
 	public static int getBitValue(long number, int nBit) {
 		int res = -1;
 		if (checkNbit(nBit)) {
-			long mask = 1L << nBit;
+			long mask = extracted(nBit);
 			res = (number & mask) == 0 ? 0 : 1;
 		}
 		return res;
@@ -28,15 +28,15 @@ public class BitOperations {
 	public static long setBitValue(long number, int nBit, boolean value) {
 		long res = -1L;
 		if (checkNbit(nBit)) {
-			long mask = 1L << nBit;
-			if (value) {
-				res = number | mask;
-			} else {
-				mask = ~mask;
-				res = number & mask;
-			}
+			long mask = extracted(nBit);
+			res = value ? number | mask : number & ~mask;
 		}
 		return res;
+	}
+
+	private static long extracted(int nBit) {
+		long mask = 1L << nBit;
+		return mask;
 	}
 
 	/**
@@ -48,7 +48,7 @@ public class BitOperations {
 	public static long revertBitValue(long number, int nBit) {
 		long res = -1L;
 		if (checkNbit(nBit)) {
-			long mask = 1L << nBit;
+			long mask = extracted(nBit);
 			res = number ^ mask;
 		}
 		return res;

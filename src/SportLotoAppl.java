@@ -10,7 +10,7 @@ public class SportLotoAppl {
 	public static void main(String[] args) {
 		long array = 0;
 		for (int i = 0; i < 6; i++) {
-			int random = 0;
+			int random;
 			do {
 				random = getRandomInt(1, 49);
 			} while (arrayContainsValue(array, random));

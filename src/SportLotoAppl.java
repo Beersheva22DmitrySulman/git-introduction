@@ -10,13 +10,18 @@ public class SportLotoAppl {
 	public static void main(String[] args) {
 		long array = 0;
 		for (int i = 0; i < 6; i++) {
-			int random;
-			do {
-				random = getRandomInt(1, 49);
-			} while (BitOperations.getBitValue(array, random) == 1);
+			int random = getUniqueRandomNumber(array);
 			array = BitOperations.setBitValue(array, random, true);
 			System.out.print(random + " ");
 		}
+	}
+
+	private static int getUniqueRandomNumber(long array) {
+		int result;
+		do {
+			result = getRandomInt(1, 49);
+		} while (BitOperations.getBitValue(array, result) == 1);
+		return result;
 	}
 
 	private static int getRandomInt(int min, int max) {

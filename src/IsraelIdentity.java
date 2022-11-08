@@ -38,7 +38,12 @@ public class IsraelIdentity {
 	private static int getCheckSum(int[] digits) {
 		int sum = 0;
 		for (int i = 0; i < digits.length; i++) {
-			int digit = i % 2 == 0 ? digits[i] : Numbers.getSumDigits(digits[i] * 2);
+			int digit;
+			if (i % 2 == 0) {
+				digit = digits[i];
+			} else {
+				digit = digits[i] < 5 ? digits[i] * 2 : Numbers.getSumDigits(digits[i] * 2);
+			}
 			sum += digit;
 		}
 		return sum;

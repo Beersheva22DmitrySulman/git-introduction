@@ -1,4 +1,3 @@
-import java.util.Arrays;
 import java.util.Random;
 
 public class IsraelIdentity {
@@ -31,7 +30,10 @@ public class IsraelIdentity {
 			digits[i] = getRandomDigit(min);
 		}
 		int checkSumMod = getCheckSum(digits) % 10;
-		digits[VALID_ID_LENGTH - 1] = checkSumMod == 0 ? 0 : 10 - checkSumMod;
+		if (checkSumMod != 0) {
+			checkSumMod = 10 - checkSumMod;
+		}
+		digits[VALID_ID_LENGTH - 1] = checkSumMod;
 		return Numbers.getNumber(digits);
 	}
 	

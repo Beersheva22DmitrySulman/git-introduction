@@ -104,7 +104,7 @@ class PrimitivesTest {
 	}
 	
 	@Test
-//	@Disabled
+	@Disabled
 	void isHappyNumberTest() {
 		assertFalse(Numbers.isHappyNumber(1000));
 		assertFalse(Numbers.isHappyNumber(100_000));

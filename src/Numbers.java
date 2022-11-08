@@ -22,7 +22,7 @@ public class Numbers {
 		return res;
 	}
 	
-	private static int getSumDigits(int num) {
+	public static int getSumDigits(int num) {
 		int res = 0;
 		do {
 			res += num % 10;

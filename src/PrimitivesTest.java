@@ -70,6 +70,7 @@ class PrimitivesTest {
 	}
 	
 	@Test
+	@Disabled
 	void leadingZerosTest() {
 		assertEquals(0, BitOperations.leadingZeros(0xFF00000000000000L));	
 		assertEquals(4, BitOperations.leadingZeros(0x0F00000000000000L));
@@ -81,6 +82,7 @@ class PrimitivesTest {
 	}
 	
 	@Test
+	@Disabled
 	void onesInNumber() {
 		assertEquals(1, BitOperations.onesInNumber(8));
 		assertEquals(1, BitOperations.onesInNumber(4));
@@ -93,6 +95,7 @@ class PrimitivesTest {
 	}
 	
 	@Test
+	@Disabled
 	void getNDigitsTest() {
 		assertEquals(3, Numbers.getNDigits(255));
 		assertEquals(5, Numbers.getNDigits(10001));
@@ -101,6 +104,7 @@ class PrimitivesTest {
 	}
 	
 	@Test
+//	@Disabled
 	void isHappyNumberTest() {
 		assertFalse(Numbers.isHappyNumber(1000));
 		assertFalse(Numbers.isHappyNumber(100_000));
@@ -111,5 +115,18 @@ class PrimitivesTest {
 		assertTrue(Numbers.isHappyNumber(271_334));
 		assertTrue(Numbers.isHappyNumber(100_010));
 		assertTrue(Numbers.isHappyNumber(321_006));
+	}
+	
+	@Test
+	@Disabled
+	void getDigitsTest() {
+		int[] expected = {1, 2, 3, 4};
+		assertArrayEquals(expected, Numbers.getDigits(1234));
+	}
+	
+	@Test
+	void getNumberTest() {
+		int expected = 12335;
+		assertEquals(expected, Numbers.getNumber(new int[] {1, 2, 3, 3, 5}));
 	}
 }

@@ -52,4 +52,22 @@ public class MyArrays {
 		System.arraycopy(array, index, res, index + 1, array.length - index);
 		return res;
 	}
+	
+	public static int binarySearch(int[] array, int number) {
+		int l = 0;
+		int r = array.length - 1;
+		while (l != r) {
+			int m = l + (r - l) / 2;
+			if (array[m] >= number) {
+				r = m;
+			} else {
+				l = m + 1;
+			}
+		}
+		int res = l;
+		if (array[l] != number) {
+			res = -1 - l;
+		}
+		return res;
+	}
 }

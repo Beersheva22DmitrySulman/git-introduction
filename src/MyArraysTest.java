@@ -1,15 +1,18 @@
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 public class MyArraysTest {
 	@Test
+	@Disabled
 	void addNumberTest() {
 		int[] expected = {1, 2, 3, 4, 5, 10};
 		assertArrayEquals(expected, MyArrays.addNumber(new int[] {1, 2, 3, 4, 5}, 10));
 	}
 	
 	@Test
+	@Disabled
 	void removeNumberTest() {
 		int[] expected1 = {1, 2, 4, 5};
 		assertArrayEquals(expected1, MyArrays.removeNumber(new int[] {1, 2, 3, 4, 5}, 2));
@@ -24,6 +27,7 @@ public class MyArraysTest {
 	}
 	
 	@Test
+	@Disabled
 	void insertSortedTest() {
 		int[] expected1 = {1, 2, 3, 4, 5, 6};
 		assertArrayEquals(expected1, MyArrays.insertSorted(new int[] {1, 2, 3, 4, 6}, 5));
@@ -41,5 +45,21 @@ public class MyArraysTest {
 		assertArrayEquals(expected7, MyArrays.insertSorted(new int[] {1, 2, 3, 4}, 0));
 		int[] expected8 = {1, 1, 2, 3, 4};
 		assertArrayEquals(expected8, MyArrays.insertSorted(new int[] {1, 2, 3, 4}, 1));
+	}
+	
+	@Test
+	void binarySearchTest() {
+		assertEquals(2, MyArrays.binarySearch(new int[] {1, 2, 3, 4, 6, 7, 8, 9, 10}, 3));
+		assertEquals(3, MyArrays.binarySearch(new int[] {0, 1, 2, 3, 3, 3, 8, 9, 10}, 3));
+		assertEquals(0, MyArrays.binarySearch(new int[] {3, 3, 3, 3, 3, 3, 8, 9, 10}, 3));
+		assertEquals(0, MyArrays.binarySearch(new int[] {3, 3, 3, 3, 3, 3, 3, 3, 3}, 3));
+		assertEquals(0, MyArrays.binarySearch(new int[] {3, 4, 5, 6}, 3));
+		assertEquals(0, MyArrays.binarySearch(new int[] {3, 3, 4, 5, 6}, 3));
+		assertEquals(-1, MyArrays.binarySearch(new int[] {3, 3, 3, 3, 3, 3, 8, 9, 10}, 2));
+		assertEquals(-5, MyArrays.binarySearch(new int[] {1, 2, 3, 4, 6, 7, 8, 9, 10}, 5));
+		assertEquals(-5, MyArrays.binarySearch(new int[] {1, 4, 4, 4, 6, 7, 8, 9, 10}, 5));
+		assertEquals(-5, MyArrays.binarySearch(new int[] {1, 2, 3, 4, 6, 6, 6, 9, 10}, 5));
+		assertEquals(-5, MyArrays.binarySearch(new int[] {1, 4, 4, 4, 6, 6, 6, 9, 10}, 5));
+		assertEquals(-2, MyArrays.binarySearch(new int[] {1, 4, 4, 4, 6, 6, 6, 9, 10}, 2));
 	}
 }

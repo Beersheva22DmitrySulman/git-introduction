@@ -25,9 +25,9 @@ public class IsraelIdentity {
 	 */
 	public static int generateRandomId() {
 		int[] digits = new int[VALID_ID_LENGTH];
-		for (int i = 0; i < VALID_ID_LENGTH - 1; i++) {
-			int min = i == 0 ? 1 : 0;
-			digits[i] = getRandomDigit(min);
+		digits[0] = getRandomDigit(1);
+		for (int i = 1; i < VALID_ID_LENGTH - 1; i++) {
+			digits[i] = getRandomDigit(0);
 		}
 		int checkSumMod = getCheckSum(digits) % 10;
 		if (checkSumMod != 0) {

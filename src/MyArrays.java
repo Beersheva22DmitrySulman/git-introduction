@@ -45,7 +45,7 @@ public class MyArrays {
 		return insertAtIndex(arraySorted, number, index);
 	}
 	
-	public static int[] insertAtIndex(int[] array, int number, int index) {
+	private static int[] insertAtIndex(int[] array, int number, int index) {
 		int[] res = new int[array.length + 1];
 		res[index] = number;
 		System.arraycopy(array, 0, res, 0, index);

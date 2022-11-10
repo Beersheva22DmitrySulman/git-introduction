@@ -37,14 +37,19 @@ public class MyArrays {
 	 * @return new array with inserted number at an index for keeping array sorted
 	 */
 	public static int[] insertSorted(int[] arraySorted, int number) {
-		int[] res = new int[arraySorted.length + 1];
-		int position = Arrays.binarySearch(arraySorted , number);
-		if (position < 0) {
-			position = -1 - position;
+		int index = Arrays.binarySearch(arraySorted , number);
+		if (index < 0) {
+			index = -1 - index;
 		}
-		res[position] = number;
-		System.arraycopy(arraySorted, 0, res, 0, position);
-		System.arraycopy(arraySorted, position, res, position + 1, arraySorted.length - position);
+		
+		return insertAtIndex(arraySorted, number, index);
+	}
+	
+	public static int[] insertAtIndex(int[] array, int number, int index) {
+		int[] res = new int[array.length + 1];
+		res[index] = number;
+		System.arraycopy(array, 0, res, 0, index);
+		System.arraycopy(array, index, res, index + 1, array.length - index);
 		return res;
 	}
 }

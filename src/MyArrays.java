@@ -74,18 +74,18 @@ public class MyArrays {
 	}
 
 	public static void bubbleSort(int[] array) {
-		int nextInterationLimit = array.length - 1;
+		int nextIterationLimit = array.length - 1;
 		for (int i = 0; i < array.length - 1; i++) {
-			nextInterationLimit = moveGreaterRight(array, nextInterationLimit);
-			if (nextInterationLimit == -1) {
+			nextIterationLimit = moveGreaterRight(array, nextIterationLimit);
+			if (nextIterationLimit == -1) {
 				break;
 			}
 		}
 	}
 
-	private static int moveGreaterRight(int[] array, int interationLimit) {
+	private static int moveGreaterRight(int[] array, int iterationLimit) {
 		int lastSwapIndex = -1;
-		for (int j = 0; j < interationLimit; j++) {
+		for (int j = 0; j < iterationLimit; j++) {
 			if (array[j + 1] < array[j]) {
 				lastSwapIndex = j;
 				swapElements(array, j, j + 1);

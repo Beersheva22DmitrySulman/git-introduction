@@ -92,7 +92,6 @@ public class MyArraysTest {
 
 	@Test
 	void isOneSwapTestTrue() {
-
 		assertTrue(MyArrays.isOneSwapForSorted(new int[] { 10, 2, 3, 4, 1 }));
 		assertTrue(MyArrays.isOneSwapForSorted(new int[] { 1, 2, 4, 3, 5, 10 }));
 		assertTrue(MyArrays.isOneSwapForSorted(new int[] { 1, 2, 3, 10, 5, 4 }));

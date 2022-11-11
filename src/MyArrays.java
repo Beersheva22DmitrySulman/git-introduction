@@ -54,8 +54,10 @@ public class MyArrays {
 	}
 
 	public static int binarySearch(int[] array, int number) {
-		int l = 0;
-		int r = array.length - 1;
+		return binarySearchLeft(array, number, 0, array.length - 1);
+	}
+
+	private static int binarySearchLeft(int[] array, int number, int l, int r) {
 		while (l != r) {
 			int m = l + (r - l) / 2;
 			if (array[m] >= number) {
@@ -70,11 +72,8 @@ public class MyArrays {
 		}
 		return res;
 	}
-	
-	public static int count;
 
 	public static void bubbleSort(int[] array) {
-		count = 0;
 		int nextInterationLimit = array.length - 1;
 		for (int i = 0; i < array.length - 1; i++) {
 			nextInterationLimit = moveGreaterRight(array, nextInterationLimit);
@@ -82,13 +81,11 @@ public class MyArrays {
 				break;
 			}
 		}
-		System.out.println(count);
 	}
-	
-	private static int moveGreaterRight(int[] array, int length) {
+
+	private static int moveGreaterRight(int[] array, int interationLimit) {
 		int lastSwapIndex = -1;
-		for (int j = 0; j < length; j++) {
-			count++;
+		for (int j = 0; j < interationLimit; j++) {
 			if (array[j + 1] < array[j]) {
 				lastSwapIndex = j;
 				swapElements(array, j, j + 1);
@@ -96,56 +93,57 @@ public class MyArrays {
 		}
 		return lastSwapIndex;
 	}
-	
+
 	private static void swapElements(int[] array, int index1, int index2) {
 		int swap = array[index1];
 		array[index1] = array[index2];
 		array[index2] = swap;
 	}
 
-	public static boolean checkArray(int[] array) {
+	public static boolean isOneSwapForSorted(int[] array) {
 		int[] arrayCopy = Arrays.copyOf(array, array.length);
 		boolean res = false;
-		int bugsCount = 0;
 		int bugIndex = -1;
+		int continueIndex = -1;		
+		//Find the index of the first "bug" in the array
 		for (int i = 1; i < arrayCopy.length; i++) {
 			if (arrayCopy[i] < arrayCopy[i - 1]) {
-				if (res) {
-					res = false;
+				//Find the index of the first "bug" to properly handle the case when we have a subsequence of the same "bugs", e.g. { 2, 3, 4, 6, 6, 6, 5 }
+				//At this moment we can be sure that the beginning part of the array is sorted, so we can safely use binarySearchLeft
+				bugIndex = binarySearchLeft(arrayCopy, arrayCopy[i - 1], 0, i - 1);
+				//Store the index where we stopped + 1
+				continueIndex = i + 1;
+				break;
+			}
+		}
+		//If we found a "bug" we should find the first index where we can make a swap with the bug
+		if (bugIndex != -1) {
+			//If we don't find the index to swap we will take the last element of the array
+			int swapIndex = arrayCopy.length - 1;
+			//Find the index to swap starting from the continueIndex
+			for (int i = continueIndex; i < arrayCopy.length; i++) {
+				//Find the index of the first element which is not less than bug and return the previous index
+				if (arrayCopy[i] >= arrayCopy[bugIndex]) {
+					swapIndex = i - 1;
 					break;
 				}
-				bugsCount++;
-				if (bugIndex == -1) {
-					bugIndex = i - 1;
-				}
 			}
-			if (!res && bugIndex != -1) {
-				swapElements(arrayCopy, bugIndex, i);
-				res = isNubmerAtIndexValid(arrayCopy, bugIndex) && isNubmerAtIndexValid(arrayCopy, i);
-				if (res) {
-					bugsCount--;
-				} else {
-					swapElements(arrayCopy, bugIndex, i);
-				}
-			}
-			if (bugsCount == 2) {
+			//Swap elements
+			swapElements(arrayCopy, bugIndex, swapIndex);
+			//Check if now array is sorted. We can check it starting from the index of the bug (we can be sure that the beginning part of the array is sorted) but not less than from the 2nd element (index №1)
+			res = isArrayPartSorted(arrayCopy, Math.max(1, bugIndex));
+		}	
+		return res;
+	}
+	
+	public static boolean isArrayPartSorted(int[] array, int start) {
+		boolean res = true;
+		for (int i = start; i < array.length; i++) {
+			if (array[i] < array[i - 1]) {
 				res = false;
 				break;
 			}
 		}
-
 		return res;
 	}
-
-	private static boolean isNubmerAtIndexValid(int[] array, int index) {
-		boolean res = true;
-		if (index > 0 && array[index - 1] > array[index]) {
-			res = false;
-		}
-		if (res && index < array.length - 1 && array[index + 1] < array[index]) {
-			res = false;
-		}
-		return res;
-	}
-
 }

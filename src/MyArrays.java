@@ -131,14 +131,14 @@ public class MyArrays {
 			//Swap elements
 			swapElements(arrayCopy, bugIndex, swapIndex);
 			//Check if now array is sorted. We can check it starting from the index of the bug (we can be sure that the beginning part of the array is sorted) but not less than from the 2nd element (index №1)
-			res = isArrayPartSorted(arrayCopy, Math.max(1, bugIndex));
+			res = isArrayPartSorted(arrayCopy, bugIndex);
 		}	
 		return res;
 	}
 	
-	public static boolean isArrayPartSorted(int[] array, int start) {
+	private static boolean isArrayPartSorted(int[] array, int start) {
 		boolean res = true;
-		for (int i = start; i < array.length; i++) {
+		for (int i = Math.max(1, start); i < array.length; i++) {
 			if (array[i] < array[i - 1]) {
 				res = false;
 				break;

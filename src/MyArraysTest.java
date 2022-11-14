@@ -110,11 +110,22 @@ public class MyArraysTest {
 		assertTrue(MyArrays.isOneSwapForSorted(new int[] { 1, 2, 3, 10, 16, 11, 11, 11, 20 }));
 		assertTrue(MyArrays.isOneSwapForSorted(new int[] { 1, 2, 3, 10, 16, 11, 11, 16, 20 }));
 		assertTrue(MyArrays.isOneSwapForSorted(new int[] { 5, 4, 4, 4, 4 }));
+		assertTrue(MyArrays.isOneSwapForSorted(new int[] { 5, 5, 5, 5, 4 }));
 		assertTrue(MyArrays.isOneSwapForSorted(new int[] { 5, 5, 5, 5, 5, 6, 5 }));
 		assertTrue(MyArrays.isOneSwapForSorted(new int[] { 5, 5, 5, 6, 6, 6, 5 }));
 		assertTrue(MyArrays.isOneSwapForSorted(new int[] { 10, 1 }));
 		assertTrue(MyArrays.isOneSwapForSorted(new int[] { 1, 2, 3, 4, 5, 6, 5 }));
 		assertTrue(MyArrays.isOneSwapForSorted(new int[] { 2, 3, 4, 6, 6, 6, 5 }));
+		assertTrue(MyArrays.isOneSwapForSorted(new int[] { 2, 1, -3, 4, 5, 10 }));
+		assertTrue(MyArrays.isOneSwapForSorted(new int[] { 1, 2, 5, 4, 4, 4, 4, 4, 2, 5, 5, 6 }));
+		assertTrue(MyArrays.isOneSwapForSorted(new int[] { 1, 2, 5, 4, 4, 4, 4, 5, 2, 5, 5, 6 }));
+		assertTrue(MyArrays.isOneSwapForSorted(new int[] { 1, 5, 3, 3, 3, 3, 5, 2, 7 }));
+		assertTrue(MyArrays.isOneSwapForSorted(new int[] { 1, 5, 3, 3, 3, 3, 4, 2, 7 }));
+		assertTrue(MyArrays.isOneSwapForSorted(new int[] { 1, 2, 4, 4, 4, 3, 5 }));
+		assertTrue(MyArrays.isOneSwapForSorted(new int[] { 3, 6, 4, 4, 4, 7, 8, 10 }));
+		assertTrue(MyArrays.isOneSwapForSorted(new int[] { 3, 3, 6, 3, 3, 6, 6, 3, 6, 6 }));
+		assertTrue(MyArrays.isOneSwapForSorted(new int[] { 1, 2, 4, 4, 4, 3, 5, 5 }));
+		assertTrue(MyArrays.isOneSwapForSorted(new int[] { 1, 2, 4, 3, 3, 3, 5, 5 }));
 	}
 
 	@Test
@@ -139,6 +150,9 @@ public class MyArraysTest {
 		assertFalse(MyArrays.isOneSwapForSorted(new int[] { 1, 10 }));
 		assertFalse(MyArrays.isOneSwapForSorted(new int[] { 1, 2, 3, 10, 0, 11, 12 }));
 		assertFalse(MyArrays.isOneSwapForSorted(new int[] { 1, 2, 3, 4, 5, 6, 4 }));
+		assertFalse(MyArrays.isOneSwapForSorted(new int[] { 1, 2, 5, 4, 4, 4, 5, 4, 2, 5, 5, 6 }));
 		assertFalse(MyArrays.isOneSwapForSorted(new int[] { 10 }));
+		assertFalse(MyArrays.isOneSwapForSorted(new int[] { 3, 6, 4, 4, 4, 7, 8, 2, 10 }));
+		assertFalse(MyArrays.isOneSwapForSorted(new int[] { 1, 5, 4, 6, 7, 8, 5, 10 }));
 	}
 }

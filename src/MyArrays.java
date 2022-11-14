@@ -75,12 +75,9 @@ public class MyArrays {
 
 	public static void bubbleSort(int[] array) {
 		int nextIterationLimit = array.length - 1;
-		for (int i = 0; i < array.length - 1; i++) {
+		do {
 			nextIterationLimit = moveGreaterRight(array, nextIterationLimit);
-			if (nextIterationLimit == -1) {
-				break;
-			}
-		}
+		} while (nextIterationLimit != -1);
 	}
 
 	private static int moveGreaterRight(int[] array, int iterationLimit) {
@@ -101,48 +98,63 @@ public class MyArrays {
 	}
 
 	public static boolean isOneSwapForSorted(int[] array) {
-		int[] arrayCopy = Arrays.copyOf(array, array.length);
 		boolean res = false;
-		int bugIndex = -1;
-		int continueIndex = -1;		
-		//Find the index of the first "bug" in the array
-		for (int i = 1; i < arrayCopy.length; i++) {
-			if (arrayCopy[i] < arrayCopy[i - 1]) {
-				//Find the index of the first "bug" to properly handle the case when we have a subsequence of the same "bugs", e.g. { 2, 3, 4, 6, 6, 6, 5 }
-				//At this moment we can be sure that the beginning part of the array is sorted, so we can safely use binarySearchLeft
-				bugIndex = binarySearchLeft(arrayCopy, arrayCopy[i - 1], 0, i - 1);
-				//Store the index where we stopped + 1
-				continueIndex = i + 1;
-				break;
+		int firstBugIndex = -1;
+		int secondBugIndex = -1;
+		int previousEqualsCount = 1;
+		int bugsCount = 0;
+		boolean countEqualsAfterFirstBugFound = false;
+		for (int i = 1; i < array.length && bugsCount < 3; i++) {
+			if (array[i] < array[i - 1]) {
+				bugsCount++;
+				countEqualsAfterFirstBugFound = false;
+				if (bugsCount == 1) {
+					firstBugIndex = i - previousEqualsCount;
+					countEqualsAfterFirstBugFound = true;
+					if (previousEqualsCount > 1) {
+						bugsCount++;
+					}
+				}
+				secondBugIndex = i;
+			} else if (array[i] == array[i - 1]) {
+				previousEqualsCount++;
+				if (countEqualsAfterFirstBugFound) {
+					secondBugIndex++;
+				}
+			} else {
+				previousEqualsCount = 1;
+				countEqualsAfterFirstBugFound = false;
 			}
 		}
-		//If we found a "bug" we should find the first index where we can make a swap with the bug
-		if (bugIndex != -1) {
-			//If we don't find the index to swap we will take the last element of the array
-			int swapIndex = arrayCopy.length - 1;
-			//Find the index to swap starting from the continueIndex
-			for (int i = continueIndex; i < arrayCopy.length; i++) {
-				//Find the index of the first element which is not less than bug and return the previous index
-				if (arrayCopy[i] >= arrayCopy[bugIndex]) {
-					swapIndex = i - 1;
-					break;
-				}
-			}
-			//Swap elements
-			swapElements(arrayCopy, bugIndex, swapIndex);
-			//Check if now array is sorted. We can check it starting from the index of the bug (we can be sure that the beginning part of the array is sorted) but not less than from the 2nd element (index №1)
-			res = isArrayPartSorted(arrayCopy, bugIndex);
-		}	
+		if (bugsCount == 1 || bugsCount == 2) {
+			res = checkSwap(array, firstBugIndex, secondBugIndex);
+		}
 		return res;
 	}
-	
-	private static boolean isArrayPartSorted(int[] array, int start) {
+
+	private static boolean checkSwap(int[] array, int firstBugIndex, int secondBugIndex) {
 		boolean res = true;
-		for (int i = Math.max(1, start); i < array.length; i++) {
-			if (array[i] < array[i - 1]) {
-				res = false;
-				break;
+			if (secondBugIndex - firstBugIndex != 1) {
+				res = checkLeftBound(array, secondBugIndex, array[firstBugIndex])
+						&& checkRightBound(array, firstBugIndex, array[secondBugIndex]);
 			}
+			res = res && checkLeftBound(array, firstBugIndex, array[secondBugIndex])
+					&& checkRightBound(array, secondBugIndex, array[firstBugIndex]);
+		return res;
+	}
+
+	private static boolean checkLeftBound(int[] array, int index, int number) {
+		boolean res = true;
+		if (index > 0 && number < array[index - 1]) {
+			res = false;
+		}
+		return res;
+	}
+
+	private static boolean checkRightBound(int[] array, int index, int number) {
+		boolean res = true;
+		if (index < array.length - 1 && number > array[index + 1]) {
+			res = false;
 		}
 		return res;
 	}

@@ -156,7 +156,7 @@ public class MyArrays {
 	
 	/**
 	 * 
-	 * @param array
+	 * @param array of short positive numbers or 0
 	 * @param sum
 	 * @return true if array contains two numbers sum of which equals a given sum
 	 */

@@ -161,6 +161,18 @@ public class MyArrays {
 	 * @return true if array contains two numbers sum of which equals a given sum
 	 */
 	public static boolean isSum2(short[] array, short sum) {
-		return true;
+		boolean[] numbersArray = new boolean[Short.MAX_VALUE + 1];
+		boolean res = false;
+		int i = 0;
+		while (i < array.length && !res) {
+			res = checkIfSecondNumberExist(numbersArray, array[i], sum);
+			numbersArray[array[i]] = true;
+			i++;
+		};
+		return res;
+	}
+	
+	private static boolean checkIfSecondNumberExist(boolean[] numbersArray, short number, short sum) {
+		return number <= sum && numbersArray[sum - number];
 	}
 }

@@ -168,4 +168,20 @@ public class MyArraysTest {
 		assertFalse(MyArrays.isOneSwapForSorted(new int[] { 1, 5, 4, 6, 7, 8, 5, 10 }));
 		assertFalse(MyArrays.isOneSwapForSorted(new int[] { 1, 2, 3, 10, 16, 11, 11, 15, 20 }));
 	}
+
+	@Test
+	void isSum2Test() {
+		assertTrue(MyArrays.isSum2(new short[] { 0, 1, 2, 3, 4, 20 }, (short) 22));
+		assertTrue(MyArrays.isSum2(new short[] { 0, 100, 2, 3, 4, 22 }, (short) 122));
+		assertTrue(MyArrays.isSum2(new short[] { 0, 100, 2, 3, 4, 22 }, (short) 6));
+		assertTrue(MyArrays.isSum2(new short[] { 0, 100, 2, 3, 4, 22 }, (short) 4));
+		assertTrue(MyArrays.isSum2(new short[] { 0, 100, 2, 4, 4, 22 }, (short) 8));
+		assertTrue(MyArrays.isSum2(new short[] { 0, 100, 2, 3, 4, 22 }, (short) 2));
+
+		assertFalse(MyArrays.isSum2(new short[] { 0, 1, 2, 3, 4, 8 }, (short) 22));
+		assertFalse(MyArrays.isSum2(new short[] { 0, 1, 2, 3, 4, 8 }, (short) 13));
+		assertFalse(MyArrays.isSum2(new short[] { 1, 2, 3 }, (short) 1));
+		assertFalse(MyArrays.isSum2(new short[] { 0, 100, 2, 3, 4, 22 }, (short) 8));
+		assertFalse(MyArrays.isSum2(new short[] { 4, 2, 2, 2, 2, 2 }, (short) 8));
+	}
 }

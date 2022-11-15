@@ -49,7 +49,9 @@ public class MyArraysTest {
 	}
 
 	@Test
+	@Timeout(1)
 	void binarySearchTest() {
+		assertEquals(2, MyArrays.binarySearch(new int[] { 1, 2, 3, 4, 5 }, 3));
 		assertEquals(2, MyArrays.binarySearch(new int[] { 1, 2, 3, 4, 6, 7, 8, 9, 10 }, 3));
 		assertEquals(3, MyArrays.binarySearch(new int[] { 0, 1, 2, 3, 3, 3, 8, 9, 10 }, 3));
 		assertEquals(2, MyArrays.binarySearch(new int[] { 0, 1, 2, 3, 3, 3, 8, 9, 10 }, 2));
@@ -66,6 +68,12 @@ public class MyArraysTest {
 		assertEquals(-2, MyArrays.binarySearch(new int[] { 1, 4, 4, 4, 6, 6, 6, 9, 10 }, 2));
 		assertEquals(-1, MyArrays.binarySearch(new int[] { 1, 4, 4, 4, 6, 6, 6, 9, 10 }, 0));
 		assertEquals(-9, MyArrays.binarySearch(new int[] { 1, 4, 4, 4, 6, 6, 6, 9, 10 }, 11));
+
+		int[] arrayMillionTwos = new int[1_000_000];
+		for (int i = 0; i < 1_000_000; i++) {
+			arrayMillionTwos[i] = 2;
+		}
+		assertEquals(0, MyArrays.binarySearch(arrayMillionTwos, 2));
 	}
 
 	@Test
@@ -126,6 +134,7 @@ public class MyArraysTest {
 		assertTrue(MyArrays.isOneSwapForSorted(new int[] { 3, 3, 6, 3, 3, 6, 6, 3, 6, 6 }));
 		assertTrue(MyArrays.isOneSwapForSorted(new int[] { 1, 2, 4, 4, 4, 3, 5, 5 }));
 		assertTrue(MyArrays.isOneSwapForSorted(new int[] { 1, 2, 4, 3, 3, 3, 5, 5 }));
+		assertTrue(MyArrays.isOneSwapForSorted(new int[] { 1, 2, 3, 10, 16, 16, 15, 16, 20 }));
 	}
 
 	@Test
@@ -154,5 +163,6 @@ public class MyArraysTest {
 		assertFalse(MyArrays.isOneSwapForSorted(new int[] { 10 }));
 		assertFalse(MyArrays.isOneSwapForSorted(new int[] { 3, 6, 4, 4, 4, 7, 8, 2, 10 }));
 		assertFalse(MyArrays.isOneSwapForSorted(new int[] { 1, 5, 4, 6, 7, 8, 5, 10 }));
+		assertFalse(MyArrays.isOneSwapForSorted(new int[] { 1, 2, 3, 10, 16, 11, 11, 15, 20 }));
 	}
 }

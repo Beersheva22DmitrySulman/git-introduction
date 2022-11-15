@@ -147,18 +147,10 @@ public class MyArrays {
 	}
 
 	private static boolean checkLeftBound(int[] array, int index, int number) {
-		boolean res = true;
-		if (index > 0 && number < array[index - 1]) {
-			res = false;
-		}
-		return res;
+		return !(index > 0 && number < array[index - 1]);
 	}
 
 	private static boolean checkRightBound(int[] array, int index, int number) {
-		boolean res = true;
-		if (index < array.length - 1 && number > array[index + 1]) {
-			res = false;
-		}
-		return res;
+		return !(index < array.length - 1 && number > array[index + 1]);
 	}
 }

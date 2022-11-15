@@ -1,4 +1,3 @@
-import java.util.Random;
 
 public class SportLotoAppl {
 
@@ -19,13 +18,8 @@ public class SportLotoAppl {
 	private static int getUniqueRandomNumber(long array) {
 		int result;
 		do {
-			result = getRandomInt(1, 49);
+			result = Numbers.getRandomInt(1, 49);
 		} while (BitOperations.getBitValue(array, result) == 1);
 		return result;
-	}
-
-	private static int getRandomInt(int min, int max) {
-		Random random = new Random();
-		return random.nextInt(min, max + 1);
 	}
 }

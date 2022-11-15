@@ -1,3 +1,4 @@
+import java.util.Random;
 
 public class Numbers {
 	
@@ -46,5 +47,10 @@ public class Numbers {
 			res = res * 10 + digits[i];
 		}
 		return res;
+	}
+	
+	public static int getRandomInt(int min, int max) {
+		Random random = new Random();
+		return random.nextInt(min, max + 1);
 	}
 }

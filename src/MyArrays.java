@@ -153,4 +153,14 @@ public class MyArrays {
 	private static boolean checkRightBound(int[] array, int index, int number) {
 		return !(index < array.length - 1 && number > array[index + 1]);
 	}
+	
+	/**
+	 * 
+	 * @param array
+	 * @param sum
+	 * @return true if array contains two numbers sum of which equals a given sum
+	 */
+	public static boolean isSum2(short[] array, short sum) {
+		return true;
+	}
 }

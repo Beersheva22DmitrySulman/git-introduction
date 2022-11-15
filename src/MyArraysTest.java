@@ -59,6 +59,9 @@ public class MyArraysTest {
 		assertEquals(0, MyArrays.binarySearch(new int[] { 3, 3, 3, 3, 3, 3, 8, 9, 10 }, 3));
 		assertEquals(0, MyArrays.binarySearch(new int[] { 3, 3, 3, 3, 3, 3, 3, 3, 3 }, 3));
 		assertEquals(0, MyArrays.binarySearch(new int[] { 3, 4, 5, 6 }, 3));
+		assertEquals(0, MyArrays.binarySearch(new int[] { 3 }, 3));
+		assertEquals(-1, MyArrays.binarySearch(new int[] { 3 }, 2));
+		assertEquals(-2, MyArrays.binarySearch(new int[] { 3 }, 4));
 		assertEquals(0, MyArrays.binarySearch(new int[] { 3, 3, 4, 5, 6 }, 3));
 		assertEquals(-1, MyArrays.binarySearch(new int[] { 3, 3, 3, 3, 3, 3, 8, 9, 10 }, 2));
 		assertEquals(-5, MyArrays.binarySearch(new int[] { 1, 2, 3, 4, 6, 7, 8, 9, 10 }, 5));
@@ -67,7 +70,7 @@ public class MyArraysTest {
 		assertEquals(-5, MyArrays.binarySearch(new int[] { 1, 4, 4, 4, 6, 6, 6, 9, 10 }, 5));
 		assertEquals(-2, MyArrays.binarySearch(new int[] { 1, 4, 4, 4, 6, 6, 6, 9, 10 }, 2));
 		assertEquals(-1, MyArrays.binarySearch(new int[] { 1, 4, 4, 4, 6, 6, 6, 9, 10 }, 0));
-		assertEquals(-9, MyArrays.binarySearch(new int[] { 1, 4, 4, 4, 6, 6, 6, 9, 10 }, 11));
+		assertEquals(-10, MyArrays.binarySearch(new int[] { 1, 4, 4, 4, 6, 6, 6, 9, 10 }, 11));
 
 		int[] arrayMillionTwos = new int[1_000_000];
 		for (int i = 0; i < 1_000_000; i++) {

@@ -67,9 +67,12 @@ public class MyArrays {
 			}
 		}
 		int res = l;
-		if (array[l] != number) {
+		if (array[l] > number) {
 			res = -1 - l;
+		} else if (array[l] < number) {
+			res = - 2 - l;
 		}
+			
 		return res;
 	}
 

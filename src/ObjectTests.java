@@ -1,10 +1,12 @@
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 class ObjectTests {
 
 	@Test
+	@Disabled
 	void wrapperTest() {
 		Integer a = 10;
 		Integer b = 11;
@@ -20,6 +22,7 @@ class ObjectTests {
 	}
 	
 	@Test
+	@Disabled
 	void stringTest() {
 		String hello = "hello";
 		char[] helloAr = hello.toCharArray();
@@ -28,6 +31,18 @@ class ObjectTests {
 		assertEquals('i', helloAr[0] + 1);
 		System.out.println(helloAr[0]);
 		System.out.println((int) helloAr[0]);
+	}
+	
+	@Test
+	void anagramTest() {
+		assertTrue(Strings.isAnagram("asdqwe", "qweasd"));
+		assertTrue(Strings.isAnagram("aa ssd d qqwwe  e", "q    wqweaeasdsd "));
+		assertTrue(Strings.isAnagram("פםןוטאעיחלךעעע", "ךלחיעעאטועןםפע"));
+		assertTrue(Strings.isAnagram("qwertyqwerty", "qwertyqwerty"));
+		
+		assertFalse(Strings.isAnagram("asdqwe", "qweasd1"));
+		assertFalse(Strings.isAnagram("asdqwe", "qweasr"));
+		assertFalse(Strings.isAnagram("פםןוטאעיחךעעע", "ךלחיעעאטוןםפע"));
 	}
 
 }

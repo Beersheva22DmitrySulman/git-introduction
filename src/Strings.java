@@ -1,8 +1,11 @@
 
 public class Strings {
 	
+	//str1 is ASCII string so the maximum letters count is 255
 	private static final int MAX_LETTERS_COUNT = 255;
+	
 	private static final int MIN_VALUE = Byte.MIN_VALUE;
+	
 	private static final int MAX_VALUE = Byte.MAX_VALUE;
 	
 	/**

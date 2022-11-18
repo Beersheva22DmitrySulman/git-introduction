@@ -67,10 +67,18 @@ class ObjectTests {
 		String[] array2 = { "127", "127", "127", "127", "-128", "-128", "-128", "-128" };
 		Strings.sortStringNumbers(array2);
 		assertArrayEquals(new String[] { "-128", "-128", "-128", "-128", "127", "127", "127", "127" }, array2);
-		
+
 		String[] array3 = { "127", "100", "50", "0", "-50", "-100", "-128" };
 		Strings.sortStringNumbers(array3);
 		assertArrayEquals(new String[] { "-128", "-100", "-50", "0", "50", "100", "127" }, array3);
+
+		String[] array4 = { "0", "0", "0", "0" };
+		Strings.sortStringNumbers(array4);
+		assertArrayEquals(new String[] { "0", "0", "0", "0" }, array4);
+
+		String[] array5 = { "1" };
+		Strings.sortStringNumbers(array5);
+		assertArrayEquals(new String[] { "1" }, array5);
 	}
 
 }

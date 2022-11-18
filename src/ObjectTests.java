@@ -79,6 +79,10 @@ class ObjectTests {
 		String[] array5 = { "1" };
 		Strings.sortStringNumbers(array5);
 		assertArrayEquals(new String[] { "1" }, array5);
+		
+		String[] array6 = { "127", "-128" };
+		Strings.sortStringNumbers(array6);
+		assertArrayEquals(new String[] { "-128", "127" }, array6);
 	}
 
 }

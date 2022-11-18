@@ -1,5 +1,10 @@
 
 public class Strings {
+	
+	private static final int MAX_LETTERS_COUNT = 255;
+	private static final int MIN_VALUE = Byte.MIN_VALUE;
+	private static final int MAX_VALUE = Byte.MAX_VALUE;
+	
 	/**
 	 * 
 	 * @param str1
@@ -10,19 +15,42 @@ public class Strings {
 	public static boolean isAnagram(String str1, String str2) {
 		boolean res = false;
 		if (str1.length() == str2.length()) {
-			int[] lettersCount = new int[Character.MAX_VALUE + 1];
-			for (int i = 0; i < str1.length(); i++) {
-				lettersCount[str1.charAt(i)]++;
-				lettersCount[str2.charAt(i)]--;
-			}
-
+			int[] lettersCount = new int[MAX_LETTERS_COUNT + 1];
 			int i = 0;
 			res = true;
+			while (i < str1.length() && res) {
+				lettersCount[str1.charAt(i)]++;
+				int c = str2.charAt(i);
+				if (c <= MAX_LETTERS_COUNT) {
+					lettersCount[c]--;
+					i++;
+				} else {
+					res = false;
+				}
+			}
+			i = 0;
 			while (i < lettersCount.length && res) {
-				res = lettersCount[i] == 0;
-				i++;
+				res = lettersCount[i++] == 0;
 			}
 		}
 		return res;
+	}
+	
+	public static void sortStringNumbers(String[] array) {
+		int[] helper = new int[MAX_VALUE - MIN_VALUE + 1];
+		int min = MIN_VALUE;
+		int max = MAX_VALUE;
+		for (int i = 0; i < array.length; i++) {
+			int value = Integer.parseInt(array[i]);
+			helper[value - MIN_VALUE]++;
+			min = Math.min(min, value);
+			max = Math.max(max, value);
+		}
+		int index = 0;
+		for (int i = min; i < max + 1; i++) {
+			for (int j = 0; j < helper[i - MIN_VALUE]; j++) {
+				array[index++] = String.valueOf(i);
+			}
+		}
 	}
 }

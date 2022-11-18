@@ -41,8 +41,8 @@ public class Strings {
 	
 	public static void sortStringNumbers(String[] array) {
 		int[] helper = new int[MAX_VALUE - MIN_VALUE + 1];
-		int min = MIN_VALUE;
-		int max = MAX_VALUE;
+		int min = MAX_VALUE;
+		int max = MIN_VALUE;
 		for (int i = 0; i < array.length; i++) {
 			int value = Integer.parseInt(array[i]);
 			helper[value - MIN_VALUE]++;

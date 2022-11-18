@@ -39,6 +39,11 @@ public class Strings {
 		return res;
 	}
 	
+	/**
+	 * 
+	 * @param array of string objects, each string contains decimal presentation of a number
+	 * The method sorts input array in-place
+	 */
 	public static void sortStringNumbers(String[] array) {
 		int[] helper = new int[MAX_VALUE - MIN_VALUE + 1];
 		int min = MAX_VALUE;

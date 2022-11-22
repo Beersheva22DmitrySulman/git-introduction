@@ -62,4 +62,16 @@ public class Strings {
 			}
 		}
 	}
+	
+	public static String javaNameExp() {
+		return "[a-zA-Z$][\\w$]*|_[\\w$]+";
+	}
+	
+	public static String ipV4Octet() {
+		return "\\d|\\d\\d|[0-1]\\d\\d|2[0-4]\\d|25[0-5]";
+	}
+	
+	public static String ipV4() {
+		return String.format("((%1$s)\\.){3}(%1$s)", ipV4Octet());
+	}
 }

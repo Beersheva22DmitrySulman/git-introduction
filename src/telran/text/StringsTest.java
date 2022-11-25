@@ -75,6 +75,7 @@ public class StringsTest {
 	}
 
 	@Test
+	@Disabled
 	void javaVariableTest() {
 		assertTrue("java".matches(Strings.javaNameExp()));
 		assertFalse("1java".matches(Strings.javaNameExp()));
@@ -86,6 +87,7 @@ public class StringsTest {
 	}
 	
 	@Test
+	@Disabled
 	void ipV40OctetTest() {
 		assertTrue("0".matches(Strings.ipV4Octet()));
 		assertTrue("00".matches(Strings.ipV4Octet()));
@@ -109,6 +111,7 @@ public class StringsTest {
 	}
 	
 	@Test
+	@Disabled
 	void ipV4() {
 		assertTrue("0.0.0.0".matches(Strings.ipV4()));
 		assertTrue("01.001.010.249".matches(Strings.ipV4()));

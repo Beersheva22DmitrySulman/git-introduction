@@ -79,9 +79,7 @@ public class Strings {
 	}
 
 	private static String arithmeticExpression() {
-		String operatorExp = operator();
-		String operandExp = operand();
-		return String.format("\\(*%1$s(%2$s\\(*%1$s\\)*)*", operandExp, operatorExp);
+		return String.format("\\(*%1$s(%2$s\\(*%1$s\\)*)*", operand(), operator());
 	}
 
 	private static String operand() {

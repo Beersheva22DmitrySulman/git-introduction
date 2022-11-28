@@ -150,7 +150,7 @@ public class Strings {
 		Double res = Double.NaN;
 		if (operand.matches(doubleOperand())) {
 			res = Double.parseDouble(operand);
-		} else if (values != null && names != null){
+		} else {
 			int index = Arrays.binarySearch(names, operand);
 			if (index >= 0) {
 				res = values[index];
@@ -162,7 +162,8 @@ public class Strings {
 	private static boolean checkBraces(String expression) {
 		int count = 0;
 		int index = 0;
-		while (index < expression.length() && count >= 0) {
+		int length = expression.length();
+		while (index < length && count >= 0) {
 			char c = expression.charAt(index);
 			if (c == '(') {
 				count++;

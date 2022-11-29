@@ -83,9 +83,9 @@ public class Strings {
 	}
 
 	private static String operand() {
-		return String.format("(%1$s|%2$s)", doubleOperand(), javaNameExp());
+		return String.format("(%s|%s)", doubleOperand(), javaNameExp());
 	}
-	
+
 	private static String doubleOperand() {
 		return "(\\d+\\.?\\d*|\\.\\d+)";
 	}
@@ -112,7 +112,7 @@ public class Strings {
 			expression = expression.replaceAll("[\\s()]+", "");
 			String[] operands = expression.split(operator());
 			String[] operators = expression.split(operand());
-			res = getOperandValue(operands[0], values, names); 
+			res = getOperandValue(operands[0], values, names);
 			int index = 1;
 			while (index < operators.length && !res.isNaN()) {
 				double operandValue = getOperandValue(operands[index], values, names);
@@ -127,20 +127,20 @@ public class Strings {
 		Double res = Double.NaN;
 		if (!Double.isNaN(operand2)) {
 			switch (operator) {
-				case "+":
-					res = operand1 + operand2;
-					break;
-				case "-":
-					res = operand1 - operand2;
-					break;
-				case "*":
-					res = operand1 * operand2;
-					break;
-				case "/":
-					res = operand1 / operand2;
-					break;
-				default:
-					res = Double.NaN;
+			case "+":
+				res = operand1 + operand2;
+				break;
+			case "-":
+				res = operand1 - operand2;
+				break;
+			case "*":
+				res = operand1 * operand2;
+				break;
+			case "/":
+				res = operand1 / operand2;
+				break;
+			default:
+				res = Double.NaN;
 			}
 		}
 		return res;
@@ -149,7 +149,7 @@ public class Strings {
 	private static Double getOperandValue(String operand, double[] values, String[] names) {
 		Double res = Double.NaN;
 		if (operand.matches(doubleOperand())) {
-			res = Double.parseDouble(operand);
+			res = Double.valueOf(operand);
 		} else {
 			int index = Arrays.binarySearch(names, operand);
 			if (index >= 0) {

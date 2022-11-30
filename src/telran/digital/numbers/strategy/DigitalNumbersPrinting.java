@@ -43,25 +43,15 @@ public class DigitalNumbersPrinting {
 	}
 	
 	public static void registerSymbols() {
-		Symbol zero = new Zero();
-		Symbol one = new One();
-		Symbol two = new Two();
-		Symbol three = new Three();
-		Symbol four  = new Four();
-		Symbol five = new Five();
-		Symbol six = new Six();
-		Symbol seven = new Seven();
-		Symbol eight = new Eight();
-		Symbol nine = new Nine();
-		symbols.put(zero.symbol(), zero);
-		symbols.put(one.symbol(), one);
-		symbols.put(two.symbol(), two);
-		symbols.put(three.symbol(), three);
-		symbols.put(four.symbol(), four);
-		symbols.put(five.symbol(), five);
-		symbols.put(six.symbol(), six);
-		symbols.put(seven.symbol(), seven);
-		symbols.put(eight.symbol(), eight);
-		symbols.put(nine.symbol(), nine);
+		new Zero(symbols);
+		new One(symbols);
+		new Two(symbols);
+		new Three(symbols);
+		new Four(symbols);
+		new Five(symbols);
+		new Six(symbols);
+		new Seven(symbols);
+		new Eight(symbols);
+		new Nine(symbols);
 	}
 }

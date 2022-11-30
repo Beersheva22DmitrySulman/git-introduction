@@ -1,6 +1,12 @@
 package telran.digital.numbers.strategy.symbols;
 
+import java.util.Map;
+
 public class Five extends Symbol {
+	public Five(Map<Character, Symbol> symbols) {
+		register(symbols);
+	}
+	
 	@Override
 	public String[] render(int offset, int width, int height) {
 		String[] res = new String[height];

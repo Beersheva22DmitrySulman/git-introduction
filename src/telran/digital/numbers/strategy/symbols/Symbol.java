@@ -1,5 +1,7 @@
 package telran.digital.numbers.strategy.symbols;
 
+import java.util.Map;
+
 public abstract class Symbol {
 	private static final String SYMBOL = "*";
 	
@@ -33,5 +35,9 @@ public abstract class Symbol {
 			res[i] = " ".repeat(offset) + SYMBOL + " ".repeat(width - 2) + SYMBOL;
 		}
 		return res;
+	}
+	
+	protected void register(Map<Character, Symbol> symbols) {
+		symbols.put(symbol(), this);
 	}
 }
